@@ -22,20 +22,20 @@
             <div class="card-body">
                 <div class="media">
                     <div class="mr-3">
-                        <a href="#"><img src="../../../../global_assets/images/placeholders/placeholder.jpg" width="38"
-                                height="38" class="rounded-circle" alt=""></a>
+                        <a href="#"><img src="/photo/{{\Auth::user()->data_ktp->foto}}" width="38" height="38"
+                                class="rounded-circle" alt=""></a>
                     </div>
 
                     <div class="media-body">
-                        <div class="media-title font-weight-semibold">Victoria Baker</div>
+                        <div class="media-title font-weight-semibold">{{\Auth::user()->data_ktp->nama}}</div>
                         <div class="font-size-xs opacity-50">
-                            <i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA
+                            {{\Auth::user()->id_user}}
                         </div>
                     </div>
 
-                    <div class="ml-3 align-self-center">
+                    <!-- <div class="ml-3 align-self-center">
                         <a href="#" class="text-white"><i class="icon-cog3"></i></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -51,14 +51,17 @@
                     <div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu"
                         title="Main"></i>
                 </li>
-                <li class="nav-item">
-                    <a href="/dashboard" class="nav-link active">
-                        <i class="icon-home4"></i>
-                        <span>
-                            Dashboard
-                        </span>
-                    </a>
-                </li>
+                @if (\Auth::user()->role === "1")
+                    <li class="nav-item">
+                        <a href="/dashboard" class="nav-link">
+                            <i class="icon-home4"></i>
+                            <span>
+                                Dashboard
+                            </span>
+                        </a>
+                    </li>
+                @endif
+
                 @if (\Auth::user()->role === "2")
                     <li class="nav-item">
                         <a href="/admin/ktp" class="nav-link">
