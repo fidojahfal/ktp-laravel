@@ -31,6 +31,7 @@ Route::delete('/admin/user/delete/{id}', 'App\Http\Controllers\UserController@de
 Route::get('/admin/edit/{id}', 'App\Http\Controllers\UserController@viewEdit')->name('user.viewEdit');
 Route::put('/admin/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('user.edit');
 Route::get('/user', 'App\Http\Controllers\UserController@getUser')->name('user.getUser');
+Route::get('/user/{id}', 'App\Http\Controllers\UserController@getUserById')->name('user.getUserById');
 
 Route::get('/admin/ktp', 'App\Http\Controllers\Data_KtpController@index')->name('data_ktp.index');
 Route::delete('/admin/ktp/delete/{id}', 'App\Http\Controllers\Data_KtpController@delete');

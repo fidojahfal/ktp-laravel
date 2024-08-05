@@ -83,7 +83,7 @@ var DatatableBasic = (function () {
                     render: function (data, type, row) {
                         let html = "";
                         html += `<div class="text-center"> <a href="/admin/edit/${row.nik}" class="btn btn-xs btn-secondary btn-edit mx-2">Edit</a>`;
-                        html += `<a href="#" class="btn btn-xs btn-danger btn-delete" onClick="deleteButton('/admin/user/delete/${row.nik}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Delete</a>`;
+                        html += `<a href="#" class="btn btn-xs btn-danger btn-delete" onClick="deleteButton('/admin/ktp/delete/${row.nik}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Delete</a>`;
                         html += "</div>";
                         return html;
                     },

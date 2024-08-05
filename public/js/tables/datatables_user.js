@@ -63,7 +63,8 @@ var DatatableBasic = (function () {
                     render: function (data, type, row) {
                         let html = "";
                         html += `<div class="text-center"> <a href="/admin/edit/${row.id_user}" class="btn btn-xs btn-secondary btn-edit mx-2">Edit</a>`;
-                        html += `<a href="#" class="btn btn-xs btn-danger btn-delete" onClick="deleteButton('/admin/user/delete/${row.id_user}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Delete</a>`;
+                        html += `<a href="#" class="btn btn-xs btn-danger btn-delete mx-2" onClick="deleteButton('/admin/user/delete/${row.id_user}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Delete</a>`;
+                        html += `<a href="#" class="btn btn-xs btn-primary btn-detail" onClick="deleteButton('/admin/user/delete/${row.id_user}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Detail</a>`;
                         html += "</div>";
                         return html;
                     },
@@ -142,4 +143,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function deleteButton(url) {
     $("#modal-delete-user").attr("action", url);
+}
+
+function showDetail(id) {
+    $.ajax({
+        url: `/user/$`,
+    });
 }

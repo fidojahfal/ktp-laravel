@@ -23,9 +23,12 @@ class Data_KtpController extends Controller
 
     public function delete($id)
     {
-        $user = User::where("id_user", $id)->delete();
-        $ktp = Data_ktp::where("nik", $id)->delete();
+        $ktp = Data_ktp::find($id);
+        $user = User::find($id);
 
-        return redirect("/admin/ktp");
+        $ktp->delete();
+        $user->delete();
+
+        return redirect()->back();
     }
 }

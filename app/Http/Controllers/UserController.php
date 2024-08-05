@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\RegisterMail;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -20,6 +21,13 @@ class UserController extends Controller
     {
         $user = User::all();
         return datatables()->of($user)->addIndexColumn()->toJson();
+    }
+
+    public function getUserById($id)
+    {
+        $user = User::find($id);
+        dd(response()->json(compact("user")));
+        return response()->json(compact("user"));
     }
 
     public function viewLogin()
@@ -49,7 +57,7 @@ class UserController extends Controller
     {
         $request->validate([
             "nama" => "required|string|min:8|max:255",
-            "email" => "required|email",
+            "email" => ['required', 'email', Rule::unique("user", "email")->whereNull("deleted_at")],
             "nik" => "required|max:15",
             "password" => "required|min:8",
             "tempat_lahir" => "required",
@@ -66,13 +74,10 @@ class UserController extends Controller
         ]);
 
         $id_user = Data_ktp::where("nik", $request->nik)->first();
-        $email = User::where("email", $request->email)->first();
+        // $email = User::where("email", $request->email)->where("deleted_at", null)->first();
+
 
         if ($id_user) {
-            return redirect("/login");
-        }
-
-        if ($email) {
             return redirect("/login");
         }
 
@@ -137,9 +142,12 @@ class UserController extends Controller
     public function delete($id)
     {
         // dd($request->route("id"));
-        $user = User::where("id_user", $id)->delete();
-        $ktp = Data_ktp::where("nik", $id)->delete();
+        $user = User::find($id);
+        $ktp = Data_ktp::find($id);
 
-        return redirect("/admin/user");
+        $user->delete();
+        $ktp->delete();
+
+        return redirect()->back();
     }
 }
