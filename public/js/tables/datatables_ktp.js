@@ -82,8 +82,9 @@ var DatatableBasic = (function () {
                     data: "null",
                     render: function (data, type, row) {
                         let html = "";
-                        html += `<div class="text-center"> <a href="/admin/edit/${row.nik}" class="btn btn-xs btn-secondary btn-edit mx-2">Edit</a>`;
-                        html += `<a href="#" class="btn btn-xs btn-danger btn-delete" onClick="deleteButton('/admin/ktp/delete/${row.nik}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Delete</a>`;
+                        html += `<div class="text-center"> <a href="/admin/edit/${row.nik}" class="btn btn-xs btn-secondary btn-edit mx-1">Edit</a>`;
+                        html += `<a href="#" class="btn btn-xs btn-danger btn-delete mx-2" onClick="deleteButton('/admin/ktp/delete/${row.nik}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Delete</a>`;
+                        html += `<a href="#" class="btn btn-xs btn-primary btn-detail" onClick="showDetail(${row.nik})" id="btn-detail" data-toggle="modal" data-target="#modal_detail_ktp">Detail</a>`;
                         html += "</div>";
                         return html;
                     },
@@ -162,4 +163,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function deleteButton(url) {
     $("#modal-delete-ktp").attr("action", url);
+}
+
+function showDetail(id) {
+    $.ajax({
+        url: "/user/" + id,
+        type: "GET",
+        dataType: "json",
+        cache: true,
+        success: function (response) {
+            $("#modal-nama").val(response.user.data_ktp.nama);
+            $("#modal-email").val(response.user.email);
+            $("#modal-nik").val(response.user.id_user);
+            $("#modal-tempat_lahir").val(response.user.data_ktp.tempat_lahir);
+            $("#modal-tanggal_lahir").val(response.user.data_ktp.tanggal_lahir);
+            $("#modal_detail_user").modal("show");
+        },
+        error: function (error) {
+            console.log(error);
+        },
+    });
 }

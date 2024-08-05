@@ -64,7 +64,7 @@ var DatatableBasic = (function () {
                         let html = "";
                         html += `<div class="text-center"> <a href="/admin/edit/${row.id_user}" class="btn btn-xs btn-secondary btn-edit mx-2">Edit</a>`;
                         html += `<a href="#" class="btn btn-xs btn-danger btn-delete mx-2" onClick="deleteButton('/admin/user/delete/${row.id_user}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Delete</a>`;
-                        html += `<a href="#" class="btn btn-xs btn-primary btn-detail" onClick="deleteButton('/admin/user/delete/${row.id_user}')" id="btn-delete" data-toggle="modal" data-target="#modal_iconified">Detail</a>`;
+                        html += `<a href="#" class="btn btn-xs btn-primary btn-detail" onClick="showDetail(${row.id_user})" id="btn-detail" data-toggle="modal" data-target="#modal_detail_user">Detail</a>`;
                         html += "</div>";
                         return html;
                     },
@@ -147,6 +147,20 @@ function deleteButton(url) {
 
 function showDetail(id) {
     $.ajax({
-        url: `/user/$`,
+        url: "/user/" + id,
+        type: "GET",
+        dataType: "json",
+        cache: true,
+        success: function (response) {
+            $("#modal-nama").val(response.user.data_ktp.nama);
+            $("#modal-email").val(response.user.email);
+            $("#modal-nik").val(response.user.id_user);
+            $("#modal-tempat_lahir").val(response.user.data_ktp.tempat_lahir);
+            $("#modal-tanggal_lahir").val(response.user.data_ktp.tanggal_lahir);
+            $("#modal_detail_user").modal("show");
+        },
+        error: function (error) {
+            console.log(error);
+        },
     });
 }

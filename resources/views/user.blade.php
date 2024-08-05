@@ -63,6 +63,62 @@
             </div>
         </div>
     </div>
+
+    <div id="modal_detail_user" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> &nbsp;KTP Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label">Name:</label>
+                            <div class="col-lg-9">
+                                <input type="text" id="modal-nama" name="nama" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label">Email:</label>
+                            <div class="col-lg-9">
+                                <input type="email" id="modal-email" name="email" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label">NIK:</label>
+                            <div class="col-lg-9">
+                                <input type="number" id="modal-nik" name="nik" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label">Tempat Lahir:</label>
+                            <div class="col-lg-9">
+                                <input type="text" id="modal-tempat_lahir" name="tempat_lahir" class="form-control"
+                                    disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">Tanggal Lahir</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" id="modal-tanggal_lahir" name="tanggal_lahir" type="date"
+                                    name="date" disabled>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection
