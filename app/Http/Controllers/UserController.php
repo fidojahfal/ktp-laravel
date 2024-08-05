@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function getUserById($id)
     {
-        $user = User::find($id)->with("data_ktp")->first();
+        $user = User::with("data_ktp")->find($id);
         return response()->json(compact("user"));
     }
 

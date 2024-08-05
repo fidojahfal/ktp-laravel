@@ -170,8 +170,18 @@ function showDetail(id) {
         url: "/user/" + id,
         type: "GET",
         dataType: "json",
-        cache: true,
+        cache: false,
         success: function (response) {
+            console.log(response.user);
+            if (!response.user.data_ktp) {
+                $("#modal-nama").val("Empty");
+                $("#modal-email").val(response.user.email);
+                $("#modal-nik").val(response.user.id_user);
+                $("#modal-tempat_lahir").val("Empty");
+                $("#modal-tanggal_lahir").val("Empty");
+                $("#modal_detail_user").modal("show");
+                return;
+            }
             $("#modal-nama").val(response.user.data_ktp.nama);
             $("#modal-email").val(response.user.email);
             $("#modal-nik").val(response.user.id_user);

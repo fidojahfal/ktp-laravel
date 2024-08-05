@@ -12,6 +12,7 @@ class Data_ktp extends Model
     use SoftDeletes;
     protected $table = "data_ktp";
     protected $primaryKey = "nik";
+    public $incrementing = false;
     protected $fillable = ["tanggal_lahir", "nik", "tempat_lahir", "nama", "foto"];
 
     public function jenis_kelamin()
