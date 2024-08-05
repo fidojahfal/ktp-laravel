@@ -27,6 +27,7 @@
                             <th>No</th>
                             <th>NIK</th>
                             <th>Nama</th>
+                            <th>email</th>
                             <th>Tempat Lahir</th>
                             <th>Tanggal Lahir</th>
                             <th>Foto</th>

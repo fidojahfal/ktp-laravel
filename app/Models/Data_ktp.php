@@ -19,6 +19,6 @@ class Data_ktp extends Model
 
     public function user()
     {
-        return $this->hasOne("App/Models/User", "nik");
+        return $this->hasOne("App\Models\User", "id_user");
     }
 }

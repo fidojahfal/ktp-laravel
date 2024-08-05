@@ -100,12 +100,10 @@ class UserController extends Controller
         if (!$id_user)
             return redirect("/admin/user");
 
-        $user = User::where("id_user", $id_user)->first();
-        $ktp = Data_ktp::where("nik", $id_user)->first();
-        if (!$user || !$ktp)
-            return redirect("/admin/user");
+        $user = User::with("data_ktp")->where("id_user", $id_user)->first();
 
-        return view("edit", compact("user", "ktp"));
+
+        return view("edit", compact("user"));
 
     }
 

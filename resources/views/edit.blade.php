@@ -22,14 +22,15 @@
                             </div>
 
                             <div class="card-body">
-                                <form method="POST" action="{{route("user.edit", $ktp->nik)}}"
+                                <form method="POST" action="{{route("user.edit", $user->data_ktp->nik)}}"
                                     enctype="multipart/form-data">
                                     @method("put")
                                     @csrf
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Name:</label>
                                         <div class="col-lg-9">
-                                            <input type="text" name="nama" class="form-control" value="{{$ktp->nama}}">
+                                            <input type="text" name="nama" class="form-control"
+                                                value="{{$user->data_ktp->nama}}">
                                         </div>
                                     </div>
 
@@ -44,7 +45,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">NIK:</label>
                                         <div class="col-lg-9">
-                                            <input type="number" name="nik" class="form-control" value="{{$ktp->nik}}"
+                                            <input type="number" name="nik" class="form-control" value="{{$user->data_ktp->nik}}"
                                                 disabled>
                                         </div>
                                     </div>
@@ -53,7 +54,7 @@
                                         <label class="col-lg-3 col-form-label">Tempat Lahir:</label>
                                         <div class="col-lg-9">
                                             <input type="text" name="tempat_lahir" class="form-control"
-                                                value="{{$ktp->tempat_lahir}}">
+                                                value="{{$user->data_ktp->tempat_lahir}}">
                                         </div>
                                     </div>
 
@@ -61,7 +62,7 @@
                                         <label class="col-form-label col-lg-3">Tanggal Lahir</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" name="tanggal_lahir" type="date" name="date"
-                                                value="{{$ktp->tanggal_lahir}}">
+                                                value="{{$user->data_ktp->tanggal_lahir}}">
                                         </div>
                                     </div>
 

@@ -16,7 +16,7 @@ class Data_KtpController extends Controller
     public function getKtp(Request $request)
     {
 
-        $data_ktp = Data_ktp::all();
+        $data_ktp = Data_ktp::with("user")->get();
         return datatables()->of($data_ktp)->addIndexColumn()->toJson();
 
     }

@@ -67,6 +67,7 @@ var DatatableBasic = (function () {
                 { data: "id", name: "id" },
                 { data: "nik", name: "nik" },
                 { data: "nama", name: "nama" },
+                { data: "user.email", name: "email" },
                 { data: "tempat_lahir", name: "tempat_lahir" },
                 { data: "tanggal_lahir", name: "tanggal_lahir" },
                 {
