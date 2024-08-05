@@ -51,7 +51,7 @@ var DatatableBasic = (function () {
             processing: true,
             serverSide: true,
             ajax: {
-                url: "http://ktp.vhost/user",
+                url: "/user",
                 type: "GET",
             },
             columns: [
