@@ -36,6 +36,8 @@ Route::get('/user/{id}', 'App\Http\Controllers\UserController@getUserById')->nam
 Route::get('/admin/ktp', 'App\Http\Controllers\Data_KtpController@index')->name('data_ktp.index');
 Route::delete('/admin/ktp/delete/{id}', 'App\Http\Controllers\Data_KtpController@delete');
 Route::get('/ktp', 'App\Http\Controllers\Data_KtpController@getKtp')->name('data_ktp.getKtp');
+Route::get('/admin/add', 'App\Http\Controllers\Data_KtpController@viewAddData')->name('data_ktp.viewAdd');
+Route::post('/admin/add', 'App\Http\Controllers\Data_KtpController@addData')->name('data_ktp.add');
 
 Route::get('/ktp/pdf/download', 'App\Http\Controllers\FileController@downloadPdfKtp')->name('data_ktp.download');
 Route::get('/user/pdf/download', 'App\Http\Controllers\FileController@downloadPdfUser')->name('user.download');

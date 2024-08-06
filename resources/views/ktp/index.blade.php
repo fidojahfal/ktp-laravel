@@ -13,11 +13,19 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="text-left">
-                        <a href="{{route('data_ktp.download')}}" class="btn btn-danger" style="color:white;">PDF <i
-                                class="icon-file-pdf ml-2"></i></a>
-                        <a href="{{route('data_ktp.export')}}" class="btn btn-success" style="color:white;">Excel <i
-                                class="icon-file-excel ml-2"></i></a>
+                    <div class="d-flex justify-content-beetween">
+                        <div class="mr-1">
+                            <a href="{{route('data_ktp.download')}}" class="btn btn-danger" style="color:white;">PDF <i
+                                    class="icon-file-pdf ml-2"></i></a>
+                        </div>
+                        <div class="">
+                            <a href="{{route('data_ktp.export')}}" class="btn btn-success" style="color:white;">Excel <i
+                                    class="icon-file-excel ml-2"></i></a>
+                        </div>
+                        <div class="ml-auto">
+                            <a href="{{route('data_ktp.viewAdd')}}" class="btn btn-success" style="color:white;">Add <i
+                                    class="icon-file-plus ml-2"></i></a>
+                        </div>
                     </div>
                 </div>
 

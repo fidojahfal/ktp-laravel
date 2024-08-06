@@ -11,7 +11,11 @@
                     <div class="col-md-10 offset-6  ">
                         <div class="card">
                             <div class="card-header header-elements-inline">
-                                <h5 class="card-title">Register Page</h5>
+                                @if(!\Auth::user()->role)
+                                    <h5 class="card-title">Register Page</h5>
+                                @else
+                                    <h5 class="card-title">Add Data Page</h5>
+                                @endif
                                 <div class="header-elements">
                                     <div class="list-icons">
                                         <a class="list-icons-item" data-action="collapse"></a>
@@ -22,7 +26,9 @@
                             </div>
 
                             <div class="card-body">
-                                <form method="POST" action="{{route("user.register")}}" enctype="multipart/form-data">
+                                <form method="POST"
+                                    action="{{count(explode("/", \Route::getCurrentRoute()->uri())) > 1 ? route("data_ktp.add") : route("user.register")}}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label">Name:</label>
@@ -109,13 +115,19 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-6 text-left">
-                                            <a href="/login" type="submit" class="btn btn-secondary"><i
-                                                    class="icon-undo ml-2"></i> Login</a>
-                                        </div>
-                                        <div class="col-6 text-right"><button type="submit"
-                                                class="btn btn-warning">Register <i
-                                                    class="icon-enter ml-2"></i></button></div>
+                                        @if(!\Auth::user()->role)
+                                            <div class="col-6 text-left">
+                                                <a href="/login" type="submit" class="btn btn-secondary"><i
+                                                        class="icon-undo ml-2"></i> Login</a>
+                                            </div>
+                                            <div class="col-6 text-right"><button type="submit"
+                                                    class="btn btn-warning">Register <i
+                                                        class="icon-enter ml-2"></i></button></div>
+                                        @else
+                                            <div class="col-12 text-right"><button type="submit" class="btn btn-success">Add
+                                                    <i class="icon-add ml-2"></i></button></div>
+                                        @endif
+
                                     </div>
                                 </form>
                             </div>
